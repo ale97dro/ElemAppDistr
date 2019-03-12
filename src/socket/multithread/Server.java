@@ -3,8 +3,11 @@ package socket.multithread;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Server implements Runnable{
+
+    private static AtomicInteger ID_CLIENT = new AtomicInteger(0);
 
     public void serverService()
     {
@@ -15,21 +18,10 @@ public class Server implements Runnable{
             {
                 Socket client = server.accept();
 
-                BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-                PrintWriter writer = new PrintWriter(new OutputStreamWriter(client.getOutputStream()));
+                Thread clientThread = new Thread(new ServerThread(client, ID_CLIENT.incrementAndGet()));
 
-                String welcome = reader.readLine();
-                System.out.println(welcome);
-                writer.println(welcome);
-                writer.flush();
-
-                reader.close();
-                writer.close();
-                client.close();
+                clientThread.start();
             }
-
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
