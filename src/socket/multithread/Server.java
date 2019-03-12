@@ -11,18 +11,22 @@ public class Server implements Runnable{
 
     public void serverService()
     {
-        try {
+        try
+        {
             ServerSocket server = new ServerSocket(5000);
 
             while (true)
             {
+                //Wait for clients
                 Socket client = server.accept();
 
+                //Pass the client to another thread, start it and come back to waiting for clients
                 Thread clientThread = new Thread(new ServerThread(client, ID_CLIENT.incrementAndGet()));
-
                 clientThread.start();
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
 

@@ -20,7 +20,8 @@ public class ServerThread implements Runnable {
     @Override
     public void run()
     {
-        try {
+        try
+        {
             BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
             PrintWriter writer = new PrintWriter(new OutputStreamWriter(client.getOutputStream()));
 
