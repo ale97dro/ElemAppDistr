@@ -27,7 +27,7 @@ public class Client implements Runnable{
             //Wait for server response and then write it
             String response = reader.readLine();
 
-            System.out.println("Server response: " + response);
+            System.out.println("UDPServer response: " + response);
 
             reader.close();
             writer.close();

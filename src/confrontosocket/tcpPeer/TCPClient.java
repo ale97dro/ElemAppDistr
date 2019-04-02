@@ -1,20 +1,18 @@
-package socketp2p;
+package confrontosocket.tcpPeer;
 
 import java.io.*;
 import java.net.Socket;
-import java.net.SocketException;
 import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Client implements Runnable{
+public class TCPClient implements Runnable{
 
     private static AtomicInteger ID_CLIENT = new AtomicInteger(0);
 
     private String ipAddress;
     private int port;
 
-    public Client(String ipAddress, int port)
+    public TCPClient(String ipAddress, int port)
     {
         this.ipAddress = ipAddress;
         this.port = port;
@@ -51,7 +49,7 @@ public class Client implements Runnable{
             //Wait for server response and then write it
             String response = reader.readLine();
 
-            System.out.println("UDPServer response: " + response);
+            System.out.println("Server response: " + response);
 
             reader.close();
             writer.close();

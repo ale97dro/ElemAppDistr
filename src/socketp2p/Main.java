@@ -9,10 +9,10 @@ public class Main {
 
         node.peerService();
 
-//        Thread server = new Thread(new Server("10.11.91.209"));
+//        Thread server = new Thread(new UDPServer("10.11.91.209"));
 //        server.start();
 //
-//        Thread client1 = new Thread(new Client("10.11.89.178"));
+//        Thread client1 = new Thread(new UDPClient("10.11.89.178"));
 //        client1.start();
 //
 //        try
