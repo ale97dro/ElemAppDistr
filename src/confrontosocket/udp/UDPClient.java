@@ -26,21 +26,26 @@ public class UDPClient implements Runnable{
         try
         {
             long start = System.currentTimeMillis();
+
+            client = new DatagramSocket();
+
             for(int i = 0; i < 100_000; i++)
             {
-                client = new DatagramSocket();
                 byte[] buf;
 
-                buf = "ciao server".getBytes();
+                //buf = "ciao server".getBytes();
+
+                buf = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat".getBytes();
                 DatagramPacket packet = new DatagramPacket(buf, buf.length, InetAddress.getByName("localhost"), port);
                 client.send(packet);
 
-                packet = new DatagramPacket(buf, buf.length);
-                client.receive(packet);
+                //receive packets from server
+//                packet = new DatagramPacket(buf, buf.length);
+//                client.receive(packet);
+//
+//                String received = new String(packet.getData(), 0, packet.getLength()); //packet.getLenght() -> lunghezza totale del pacchetto
 
-                String received = new String(packet.getData(), 0, packet.getLength()); //packet.getLenght() -> lunghezza totale del pacchetto
-
-                System.out.println(i);
+                //System.out.println(i);
             }
 
             long end = System.currentTimeMillis();

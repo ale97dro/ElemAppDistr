@@ -22,6 +22,9 @@ public class UDPServer implements Runnable{
         {
             DatagramSocket server = new DatagramSocket(port);
 
+            int byteCounter = 0;
+
+
             byte[] buf = new byte[2048];
             while (true)
             {
@@ -40,8 +43,15 @@ public class UDPServer implements Runnable{
 
                 String received = new String(packet.getData(), 0, packet.getLength());
 
+                byteCounter += packet.getLength();
+
+                //System.out.println(byteCounter);
+
+                //System.out.println("Server: " + received);
                 //System.out.println("Dal client ho ricevuto " + received);
-                server.send(packet);
+
+                //Send packet to client
+                //server.send(packet);
             }
         }
         catch (IOException e)

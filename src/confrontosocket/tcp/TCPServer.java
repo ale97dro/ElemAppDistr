@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class TCPServer implements Runnable{
 
-    private static AtomicInteger ID_CLIENT = new AtomicInteger(0);
+    //private static AtomicInteger ID_CLIENT = new AtomicInteger(0);
 
     private int port;
 
@@ -27,30 +27,37 @@ public class TCPServer implements Runnable{
                 //Wait for clients
                 Socket client = server.accept();
 
-               // BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
+                BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
                 //PrintWriter writer = new PrintWriter(new OutputStreamWriter(client.getOutputStream()));
 
-                DataInputStream reader = new DataInputStream(client.getInputStream());
+               // DataInputStream reader = new DataInputStream(client.getInputStream());
 
 
                 //https://stackoverflow.com/questions/1176135/socket-send-and-receive-byte-array
 
-                int length = reader.readInt();
 
-                if(length > 0)
+                String line;
+
+                int byteCounter = 0;
+
+                while((line = reader.readLine()) != null)
                 {
-                    byte[] buf = new byte[length];
-                    reader.readFully(buf, 0, buf.length);
+                   // System.out.println(line);
+                    byteCounter += line.length();
                 }
 
-                //String welcome = reader.readLine();
-                //System.out.println(welcome);
-               // writer.println("Hello client! Here you're message: \"" + welcome + "\"");
-                //writer.flush();
+
+//                int length = reader.readInt();
+//                if(length > 0)
+//                {
+//                    byte[] buf = new byte[length]; //finisce la memoria
+//                    //reader.readFully(buf, 0, buf.length);
+//                }
 
                 reader.close();
-                //writer.close();
                 client.close();
+
+                System.out.println(byteCounter);
             }
         }
         catch (IOException e)

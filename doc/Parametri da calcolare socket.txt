@@ -1,0 +1,3 @@
+Velocità
+Numero di pacchetti
+Numeri di bytes inviati

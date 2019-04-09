@@ -25,30 +25,33 @@ public class TCPClient implements Runnable{
         try
         {
             //BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
+
+            long start = System.currentTimeMillis();
             client = new Socket(ipAddress, port);
             //PrintWriter writer = new PrintWriter(new OutputStreamWriter(client.getOutputStream()));
             DataOutputStream writer = new DataOutputStream(client.getOutputStream());
 
             for(int i = 0; i < 100_000; i++)
             {
-                byte[] buf = "ciao server".getBytes();
-                //Write to server
-               // writer.println("Hello server, I'm client " + ID_CLIENT.incrementAndGet());
+                //byte[] buf = "ciao server".getBytes();
+
+                byte[] buf = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat".getBytes();
+
                 writer.write(buf);
                 writer.flush(); //Communication "yield"
-
             }
-           // System.out.println("Server response: " + response);
-
-            //reader.close();
 
             writer.close();
             client.close();
-            //client.setSoTimeout(1000);
+
+            long end = System.currentTimeMillis();
+
+            System.out.println("Time: " + (end - start));
         }
         catch (IOException e)
         {
-            System.out.println("Connection creation error");
+            //System.out.println("Connection creation error");
+            e.printStackTrace();
         }
     }
 
