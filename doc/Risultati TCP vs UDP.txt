@@ -1,0 +1,20 @@
+TCP
+
+STRINGA: "ciao server"
+Tempo trasmissione: 1076
+Numero byte: 1_100_000
+
+STRINGA: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
+Tempo: 1301
+Numero byte: 23_000_000
+
+UDP
+
+STRINGA: "ciao server"
+Tempo trasmissione: 1144
+Numero byte: 194_070_528
+
+STRINGA: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
+
+Tempo trasmissione: 1257
+Numero byte: 189_112_320

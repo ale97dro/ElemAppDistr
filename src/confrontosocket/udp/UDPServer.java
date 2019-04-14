@@ -41,11 +41,14 @@ public class UDPServer implements Runnable{
 
                 packet = new DatagramPacket(buf, buf.length, address, port);
 
+                byteCounter += packet.getLength();
+                System.out.println(byteCounter);
+
                 String received = new String(packet.getData(), 0, packet.getLength());
 
-                byteCounter += packet.getLength();
 
-                //System.out.println(byteCounter);
+
+
 
                 //System.out.println("Server: " + received);
                 //System.out.println("Dal client ho ricevuto " + received);

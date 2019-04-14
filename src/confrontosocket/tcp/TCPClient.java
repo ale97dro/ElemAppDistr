@@ -33,9 +33,9 @@ public class TCPClient implements Runnable{
 
             for(int i = 0; i < 100_000; i++)
             {
-                //byte[] buf = "ciao server".getBytes();
+                byte[] buf = "ciao server".getBytes();
 
-                byte[] buf = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat".getBytes();
+                //byte[] buf = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat".getBytes();
 
                 writer.write(buf);
                 writer.flush(); //Communication "yield"
